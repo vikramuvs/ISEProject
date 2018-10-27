@@ -1,0 +1,277 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Generation Time: Sep 27, 2018 at 10:58 AM
+-- Server version: 5.7.21
+-- PHP Version: 7.2.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `Users`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_CC_Recepient`
+--
+
+CREATE TABLE `tbl_CC_Recepient` (
+  `id` int(11) NOT NULL,
+  `record_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `to_user_id` int(11) NOT NULL,
+  `sent_date` date NOT NULL,
+  `table_entry_date` date NOT NULL,
+  `read_or_not` varchar(5) NOT NULL,
+  `read_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_CC_Recepient`
+--
+
+INSERT INTO `tbl_CC_Recepient` (`id`, `record_id`, `from_user_id`, `to_user_id`, `sent_date`, `table_entry_date`, `read_or_not`, `read_date`) VALUES
+(2, 20, 105, 113, '2018-09-26', '2018-09-26', 'No', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_Dept`
+--
+
+CREATE TABLE `tbl_Dept` (
+  `dept_ID` int(11) NOT NULL,
+  `dept_Name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_Dept`
+--
+
+INSERT INTO `tbl_Dept` (`dept_ID`, `dept_Name`) VALUES
+(101, 'Admin'),
+(102, 'Architecture'),
+(103, 'Biotech Engineering'),
+(104, 'CEO Office'),
+(105, 'Chemical Engineering'),
+(106, 'Civil Engineering'),
+(107, 'Computer Science & Engineering'),
+(108, 'Electrical & Electronics Eng '),
+(109, 'Electronics & Communication Eng '),
+(110, 'Hostel '),
+(111, 'Humanities'),
+(112, 'Industrial Engineering & Management'),
+(113, 'Information Science & Engineering'),
+(114, 'Instrumentation Technology '),
+(115, 'Library'),
+(116, 'Maths'),
+(117, 'MBA'),
+(118, 'Mechanical Engineering'),
+(119, 'Medical Electronics'),
+(120, 'Principal'),
+(121, 'Proctor'),
+(122, 'Sports'),
+(123, 'Telecommunication Engineering');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_Orig_Recepient`
+--
+
+CREATE TABLE `tbl_Orig_Recepient` (
+  `id` int(11) NOT NULL,
+  `record_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `to_user_id` int(11) NOT NULL,
+  `record_sent_date` date NOT NULL,
+  `table_entry_date` date NOT NULL COMMENT 'date of entry into this table',
+  `read_or_not` varchar(5) NOT NULL,
+  `read_date` date NOT NULL,
+  `comment` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_Orig_Recepient`
+--
+
+INSERT INTO `tbl_Orig_Recepient` (`id`, `record_id`, `from_user_id`, `to_user_id`, `record_sent_date`, `table_entry_date`, `read_or_not`, `read_date`, `comment`) VALUES
+(1, 21, 105, 113, '2018-09-26', '2018-09-26', 'No', '2018-09-26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_Recepients`
+--
+
+CREATE TABLE `tbl_Recepients` (
+  `id` int(11) NOT NULL,
+  `record_id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
+  `sent_date` date NOT NULL,
+  `entry_into_table_date` date NOT NULL,
+  `read_or_not` varchar(5) DEFAULT NULL COMMENT 'flag to determine whether the record is viewed or not',
+  `read_date` date DEFAULT NULL,
+  `intended_or_copy_recepient` varchar(10) NOT NULL COMMENT 'flag saying whether the recipient has got a copy of the record or the original record',
+  `comment` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_Recepients`
+--
+
+INSERT INTO `tbl_Recepients` (`id`, `record_id`, `sender_id`, `receiver_id`, `sent_date`, `entry_into_table_date`, `read_or_not`, `read_date`, `intended_or_copy_recepient`, `comment`) VALUES
+(1, 21, 105, 113, '2018-09-27', '2018-09-27', 'No', NULL, 'Intended', NULL),
+(2, 20, 105, 113, '2018-09-27', '2018-09-27', 'No', NULL, 'Copy', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_Records`
+--
+
+CREATE TABLE `tbl_Records` (
+  `ID` int(11) NOT NULL,
+  `SenderDept` int(50) DEFAULT NULL,
+  `SenderName` varchar(100) NOT NULL,
+  `RecepientDept` int(50) NOT NULL,
+  `RecepientName` varchar(100) NOT NULL,
+  `OutwardNo` int(11) DEFAULT NULL,
+  `OutwardDate` date DEFAULT NULL,
+  `Mode` varchar(10) NOT NULL,
+  `InwardDate` date DEFAULT NULL,
+  `RefNo` int(11) NOT NULL,
+  `InwardNo` int(11) DEFAULT NULL,
+  `Subject` text NOT NULL,
+  `Status` varchar(10) DEFAULT NULL,
+  `EntryDate` datetime DEFAULT NULL,
+  `MvtType` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_Records`
+--
+
+INSERT INTO `tbl_Records` (`ID`, `SenderDept`, `SenderName`, `RecepientDept`, `RecepientName`, `OutwardNo`, `OutwardDate`, `Mode`, `InwardDate`, `RefNo`, `InwardNo`, `Subject`, `Status`, `EntryDate`, `MvtType`) VALUES
+(1, 113, 'test1', 107, 'test2', 55555, '2018-08-06', 'Email', '2018-08-09', 2222, 3333, 'testing', 'P', '2018-08-15 08:13:09', ''),
+(2, 102, 'dfgdg', 101, 'dfgdfg', 345, '2018-08-12', 'Email', '2018-08-08', 345, 345, 'dfgdg', 'P', NULL, ''),
+(3, 101, 'fgh', 102, 'fghfgh', 4565, '2018-08-14', 'Post', '2018-08-14', 345345, 345, 'dfgd', 'P', NULL, ''),
+(4, 105, 'fgh', 102, 'fghf', 456, '2018-08-07', 'Post', '2018-08-13', 345, 35, 'dfdsf', 'P', NULL, ''),
+(5, 101, 'fghfgh', 102, 'fghfgh', 456456, '2018-08-07', 'Post', '2018-08-14', 456456, 45645, 'fghfh', 'P', NULL, ''),
+(6, 102, 'ghjghj', 103, 'ghjgj', 5675, '2018-08-07', 'Post', '2018-08-06', 567, 567, 'fghfh', 'P', NULL, ''),
+(7, 103, 'sdfsdf', 102, 'asd', 23, '2018-08-07', 'Email', '2018-08-07', 2323, 2323, 'salads', 'P', NULL, ''),
+(8, 103, 'test', 105, 'test', 223, '2018-08-07', 'Post', '2018-08-02', 212, 333, 'asfasf', 'P', NULL, ''),
+(9, 103, 'test', 105, 'test', 223, '2018-08-07', 'Post', '2018-08-02', 212, 333, 'asfasf', 'P', NULL, ''),
+(10, 106, 'test', 103, 'test', 234, '2018-08-01', 'Email', '2018-08-02', 231, 334, 'asfa', 'P', '2018-08-31 09:40:11', ''),
+(11, 106, 'test', 102, 'etst', 2323, '2018-08-07', 'Post', '2018-08-05', 333, 111, 'asad', 'P', '2018-08-31 11:02:15', ''),
+(12, 113, 'Test', 108, 'Test', 435345, '2018-09-05', 'Post', '2018-09-17', 23424, 234234, 'sffdfd', 'P', '2018-09-04 14:40:42', ''),
+(13, 102, 'Vijay', 101, 'regsitrar', 222, '2018-09-05', 'Post', '2018-09-04', 333, 222, 'OOD', 'P', '2018-09-05 11:43:58', ''),
+(14, 101, 'Admin', 117, 'HOD', 222333, '2018-09-04', 'Email', '2018-09-06', 55555, 4444, 'VIJAY', 'P', '2018-09-05 13:02:57', ''),
+(15, 103, 'fight', 102, 'sdgsg', 34545, '2018-09-12', 'Email', '2018-09-13', 345, 345, '34t5', 'P', '2018-09-05 16:29:36', ''),
+(16, 102, 'archi', 101, 'admin', NULL, NULL, 'Post', '2018-09-21', 457, NULL, 'sdfsf', NULL, '2018-09-20 10:18:11', 'Inward'),
+(17, 101, 'admin', 104, 'admintest', NULL, '2018-09-14', 'Post', NULL, 6666, NULL, 'as dad', NULL, '2018-09-20 10:22:52', 'Outward'),
+(18, 104, 'xsada', 101, 'admin', NULL, NULL, 'Post', '2018-09-21', 324234, NULL, 'ffgfgf', NULL, '2018-09-20 10:24:14', 'Inward'),
+(19, 113, 'hod_ise', 101, 'admintest', NULL, '2018-09-20', 'Post', NULL, 567745, NULL, 'test subject', NULL, '2018-09-20 11:57:38', 'Outward'),
+(20, 105, 'them hod', 113, 'hod_ise', NULL, NULL, 'Post', '2018-09-21', 8888, NULL, 'khgjhgv', NULL, '2018-09-20 12:18:39', 'Inward'),
+(21, 105, 'MSR', 113, 'hod_ise', NULL, NULL, 'Email', '2018-09-20', 56789, NULL, 'qwerty', NULL, '2018-09-20 12:51:08', 'Inward');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_Users`
+--
+
+CREATE TABLE `tbl_Users` (
+  `ID` int(11) NOT NULL COMMENT 'ID',
+  `UserName` varchar(255) NOT NULL COMMENT 'Username',
+  `Password` varchar(255) NOT NULL COMMENT 'Password',
+  `Dept_ID` int(11) NOT NULL,
+  `UserLevel` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_Users`
+--
+
+INSERT INTO `tbl_Users` (`ID`, `UserName`, `Password`, `Dept_ID`, `UserLevel`) VALUES
+(1, 'admin', 'admin', 101, 'A'),
+(2, 'hod_ise', 'hod', 113, 'U'),
+(3, 'hod_cse', 'hod', 107, 'U'),
+(4, 'hod_ece', 'hod', 109, 'U'),
+(5, 'hod_chem', 'hod', 105, 'U');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_CC_Recepient`
+--
+ALTER TABLE `tbl_CC_Recepient`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_Dept`
+--
+ALTER TABLE `tbl_Dept`
+  ADD PRIMARY KEY (`dept_ID`),
+  ADD UNIQUE KEY `dept_ID` (`dept_ID`);
+
+--
+-- Indexes for table `tbl_Orig_Recepient`
+--
+ALTER TABLE `tbl_Orig_Recepient`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_Recepients`
+--
+ALTER TABLE `tbl_Recepients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_Records`
+--
+ALTER TABLE `tbl_Records`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `tbl_Users`
+--
+ALTER TABLE `tbl_Users`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_CC_Recepient`
+--
+ALTER TABLE `tbl_CC_Recepient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_Orig_Recepient`
+--
+ALTER TABLE `tbl_Orig_Recepient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_Recepients`
+--
+ALTER TABLE `tbl_Recepients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_Records`
+--
+ALTER TABLE `tbl_Records`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
