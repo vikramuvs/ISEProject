@@ -216,7 +216,7 @@ session_start();
 
                                 <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a> -->
 
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                                <a class="nav-link" href="logout.php"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
 
@@ -293,7 +293,18 @@ session_start();
                             </div> 
                         </div> -->
                         <h4 class="mb-0">
-                            <span class="count">10</span>
+                            <span class="count">
+                            <?php 
+                                if (!(isset($_SESSION["userDeptID"]) || isset($_SESSION["userName"]) || isset($_SESSION["userLevel"])))
+                                    header('Location: login1.php');
+                                else
+                                {
+                                    include('dbi.php');
+                                    $query = "SELECT ID FROM tbl_Records WHERE SenderDept = ".$_SESSION["userDeptID"];
+                                    echo mysqli_num_rows(mysqli_query($connection, $query));
+                                }
+                            ?>
+                            </span>
                         </h4>
                         <p class="text-light">Records Sent</p>
 
@@ -323,7 +334,14 @@ session_start();
                             </div>
                         </div> -->
                         <h4 class="mb-0">
-                            <span class="count">1</span>
+                            <span class="count" >
+                                <?php 
+                                include('dbi.php');
+                                    $query = "SELECT ID FROM tbl_Records WHERE RecepientDept = ".$_SESSION["userDeptID"];
+                                    echo mysqli_num_rows(mysqli_query($connection, $query));
+                                ?>
+                                    
+                                </span>
                         </h4>
                         <p class="text-light">Records Received</p>
 
@@ -352,7 +370,11 @@ session_start();
                             </div>
                         </div> -->
                         <h4 class="mb-0">
-                            <span class="count">6</span>
+                            <span class="count">
+                                <?php 
+                                    echo 0;
+                                ?>        
+                            </span>
                         </h4>
                         <p class="text-light">Records Approved</p>
 
@@ -381,7 +403,11 @@ session_start();
                             </div>
                         </div> -->
                         <h4 class="mb-0">
-                            <span class="count">1</span>
+                            <span class="count" >
+                                <?php 
+                                    echo 0;
+                                ?>    
+                            </span>
                         </h4>
                         <p class="text-light">xxyyzz</p>
 

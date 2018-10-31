@@ -4,6 +4,7 @@ ini_set('display_errors', 'On');
 
 if (isset($_SESSION["userDeptID"]) && isset($_SESSION["userName"]))
     header('Location: index.php'); 
+    //echo $_SESSION["userDeptID"] . "     " . $_SESSION["userName"];
 
 //$con = mysqli_connect('localhost', 'root', 'root', 'Users');
 
@@ -138,7 +139,7 @@ if(isset($_POST['registerBtn']))
                             </div>
                         </div> -->
                         <div class="register-link m-t-15 text-center">
-                            <p>Already have account ? <a href="login.php"> Sign in</a></p>
+                            <p>Already have account ? <a href="login1.php"> Sign in</a></p>
                         </div>
                     </form>
                 </div>

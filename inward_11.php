@@ -27,6 +27,7 @@ ini_set('display_errors', 'On');
     <link rel="stylesheet" href="css/bootstrap-multiselect.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="assets/scss/style.css">
+    <link rel="stylesheet" href="assets/css/select2.min.css"/> 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -379,7 +380,7 @@ ini_set('display_errors', 'On');
                                                     </div>
                                                     <div class="row">
                                                     <label>Select Department(s)</label>
-                                                    <select name="multiselect[]" id="select_multiple_depts" class="form-control" multiple="multiple">
+                                                    <select name="multiselect[]" id="select_multiple_depts" class="form-control" multiple="multiple" style="width: 350px;">
                                                         <?php
                                                             $mysqli = new mysqli("localhost", "root", "root", "Users");
                                                             $query = "SELECT * from tbl_Dept where dept_ID !=".$_SESSION["userDeptID"];
@@ -421,16 +422,19 @@ ini_set('display_errors', 'On');
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/lib/data-table/datatables-init.js"></script>
     <script src="js/bootstrap-multiselect.js"></script>
+     <script src="assets/js/select2.min.js"></script>
 
         <script type="text/javascript" language="javascript" >
                         $(document).ready(function(){
-                        $('#select_multiple_depts').multiselect({            
-                            includeSelectAllOption: true,
-                            enableFiltering: true,
-                            buttonWidth:'260px',
-                            maxHeight:500,
-                            enableCaseInsensitiveFiltering: true
-                        });
+                        // $('#select_multiple_depts').multiselect({            
+                        //     includeSelectAllOption: true,
+                        //     enableFiltering: true,
+                        //     buttonWidth:'260px',
+                        //     maxHeight:500,
+                        //     enableCaseInsensitiveFiltering: true
+                        // });
+                         $('#select_multiple_depts').select2({placeholder: 'Select Department'});
+
                          var dataTable = $('#user_data').DataTable({
                           "processing":true,
                           "serverSide":true,

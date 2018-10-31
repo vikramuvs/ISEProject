@@ -22,6 +22,4 @@ if ($result = mysqli_query($connection, $query))
 else
 	echo 'Oops! Something went wrong. Please contact system administrator.';
 
-
-
 ?>

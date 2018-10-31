@@ -23,7 +23,7 @@ if (isset($_SESSION["userDeptID"]))
     $output["recepientName"] = $row["RecepientName"];
     $output["date"] = $row["OutwardDate"];
     $output["subject"] = $row["Subject"];
-    $output["content"] = $row["Content"];
+    $output["_content"] = $row["Content"];
     $output["recepientType"] = $row["RecepientType"];
     $output["mode"] = $row["Mode"];
     $output["refNo"] = $row["RefNo"];

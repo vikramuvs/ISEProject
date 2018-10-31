@@ -242,7 +242,7 @@
                                 {
                                     //User Menu Entris get loaded
                                     echo '<li><i class="fa fa-puzzle-piece"></i><a href="NewRecord_final.php">Add New Record</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="InwardRecords.php">List of Inward Records</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="inward_11.php">List of Inward Records</a></li>
                             <li><i class="fa fa-bars"></i><a href="OutwardRecords.php">List of Outward Records</a></li>';
                                 }
                             }
@@ -706,6 +706,7 @@
                                     </div> -->
 
                                     <div class="row form-group">
+                                         <div class="col-lg-12">
                                         <div class="col-lg-6">
                                             <div class="col col-md-3">
                                                 <label  class=" form-control-label">Subject</label>
@@ -719,8 +720,10 @@
                                             <small class="form-text text-muted">Enter the subject of the record here.</small>
                                         </div>
                                     </div>
+                                    </div>
 
                                      <div class="row form-group">
+                                         <div class="col-lg-12">
                                         <div class="col-lg-6">
                                             <div class="col col-md-3">
                                                 <label class="form-control-label">Content</label>
@@ -734,6 +737,7 @@
                                             <small class="form-text text-muted">Enter the contents of the record here.</small>
                                         </div>
                                     </div>
+                                </div>
                                     
                                     </div>
                                 </div> 
