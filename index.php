@@ -27,7 +27,7 @@ session_start();
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+   
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
@@ -293,7 +293,7 @@ session_start();
                             </div> 
                         </div> -->
                         <h4 class="mb-0">
-                            <span class="count">
+                            <a href="OutwardRecords.php" style="color: white;"><span class="count">
                             <?php 
                                 if (!(isset($_SESSION["userDeptID"]) || isset($_SESSION["userName"]) || isset($_SESSION["userLevel"])))
                                     header('Location: login1.php');
@@ -306,7 +306,7 @@ session_start();
                             ?>
                             </span>
                         </h4>
-                        <p class="text-light">Records Sent</p>
+                        <p class="text-light">Records Sent</p></a>
 
                         <!-- <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart1"></canvas>
@@ -319,7 +319,7 @@ session_start();
             <!--/.col-->
 
             <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-2">
+                 <div class="card text-white bg-flat-color-2">
                     <div class="card-body pb-0">
                       <!--   <div class="dropdown float-right">
                             <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
@@ -334,16 +334,16 @@ session_start();
                             </div>
                         </div> -->
                         <h4 class="mb-0">
-                            <span class="count" >
+                          <a href="inward_11.php" style="color: white;"> <span class="count">
                                 <?php 
                                 include('dbi.php');
                                     $query = "SELECT ID FROM tbl_Records WHERE RecepientDept = ".$_SESSION["userDeptID"];
                                     echo mysqli_num_rows(mysqli_query($connection, $query));
                                 ?>
                                     
-                                </span>
+                                </span> 
                         </h4>
-                        <p class="text-light">Records Received</p>
+                        <p class="text-light">Records Received</p></a>
 
                       <!--   <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart2"></canvas>
